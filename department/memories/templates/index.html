@@ -1,0 +1,35 @@
+{% extends 'staticfile.html' %} 
+
+{% block content%}
+<div class="contenair" >
+  <div class="row">
+  <div  class="bg-image" style="background-image: url(../media/mmdu.jpg); height: 100vh;">
+    <div > 
+      <h1 id="tour" >MEMORIES OF <br>
+        MCA 2022-24
+         <br>  </h1>
+      <button class="btn btn-success" id="tour" type="button">Take a tour</button>
+    </div>
+  </div>
+</div>
+</div>
+ 
+<br><br>
+
+<div class="container-fluid">
+      <div class="row">
+        {% for list in lists %}
+        <div class="card mx-auto  " style="width: 18rem;">
+          <img src="{{list.image.url}}" class="card-img-top">
+            <div class="card-body">
+            <h5 class="card-title">{{list.title}}</h5>
+            <p class="card-text">{{list.disc|truncatewords:3}}</p>
+            <p class="card-title">{{list.create_at}}</p>
+            <p class="card-title">Published:{{list.create_at|timesince}}. ago</p>
+            <a href="{% url 'details' list.id %}" class="btn btn-primary">Details</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+ </div>    
+ {% endblock content %}
